@@ -1,11 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>계산기</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="wrap">
+        <h1 class="ir_so">계산기</h1>
+
+        <div id="calculator">
+            <div class="container">
+                <div class="screen">
+                    <div class="formula">
+                        <span>1</span>
+                    </div>
+                    <div class="result">
+                        <span>1</span>
+                    </div>
+                </div>
+                <table>
+                    <colgroup>
+                        
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>C</td>
+                            <td>+/-</td>
+                            <td>%</td>
+                            <td>÷</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>×</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>+</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">0</td>
+                            <td>.</td>
+                            <td>=</td>                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
