@@ -2,6 +2,7 @@
 body{
     font-size:16px;
     font-family: 'Roboto', sans-serif;
+    background-color:rgba(0,0,0,0.79);
     line-height: 1.5;
 }
 .wrap{
@@ -22,9 +23,10 @@ body{
     color:#888;
 }
 .result{
+    overflow: hidden;
+    text-overflow: ellipsis;
     width: 100%;
-    height: 100px;
-    line-height: 100px;
+    height: 50px;    
     font-size:35px;
     font-weight: bold;
     color:#262626;
@@ -32,13 +34,14 @@ body{
 
 /* 계산기 버튼 */
 #calculator{
-    width: 100%;    
+    margin:100px auto;
+    width: 400px;   
+    background-color:#fff;
+    box-shadow: 5px 5px 5px 5px rgba(105, 58, 58, 0.1);
+    border-radius:15px;
 }
-#calculator .container{
-    margin:0 auto;
-    width: 400px;
-    padding:20px 10px;
-    box-sizing: border-box;
+#calculator .container{    
+    padding: 40px 10px;    
 }
 #calculator table{    
     width: 100%;
