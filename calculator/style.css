@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 body{
     font-size:16px;
-    font-family: 'Roboto', sans-serif;
-    background-color:rgba(0,0,0,0.79);
+    font-family: 'Roboto', sans-serif;    
     line-height: 1.5;
+}
+body.off{
+    background-color:rgba(0,0,0,0.79);
 }
 .wrap{
     width: 100%;    
@@ -29,17 +31,25 @@ body{
     height: 50px;    
     font-size:35px;
     font-weight: bold;
+    color:#fff;
+}
+body.off .formula{
+    color:#888;
+}
+body.off .result{
     color:#262626;
 }
 
 /* 계산기 버튼 */
 #calculator{
+    position: relative;
     margin:100px auto;
     width: 400px;   
-    background-color:#fff;
-    box-shadow: 5px 5px 5px 5px rgba(105, 58, 58, 0.1);
+    background-color:#1e1e1e;
+    box-shadow: 7px 13px 13px 2px rgba(0, 0, 0, 0.4);
     border-radius:15px;
 }
+
 #calculator .container{    
     padding: 40px 10px;    
 }
@@ -54,16 +64,56 @@ body{
 #calculator td{     
     line-height:70px;
     border-radius:25px;
-    font-weight: bold;
-    background-color:#fafafa;
+    font-weight: bold;     
+    color:#fff;
     box-sizing: border-box;
     cursor: pointer;
 }
 #calculator .func{
+    color:#fefefe;
+    background-color:#343434;
+}
+#calculator .rs{
+    color:#fefefe;
+    background-color: #6d6d6d;
+}
+body.off #calculator{
+    background-color:#fff;
+    box-shadow: 5px 5px 5px 5px rgba(105, 58, 58, 0.1);
+}
+body.off #calculator td{
+    background-color:#fafafa;
+    color:#474747;
+}
+body.off #calculator .func{
     color:#61cea6;
     background-color:#e9f8f3;
 }
-#calculator .rs{
+body.off #calculator .rs{
     color:#d0011b;
     background-color: #f8d9dd;
+}
+
+/* 라이트 on/off */
+.light{
+    position: absolute;
+    right:0;
+    top:-50px;
+}
+.light .lightOn{
+    display: inline;
+    color:#262626;
+}
+.light .lightOff{
+    display: none;
+}
+.light.off .lightOn{
+    display: none;
+}
+.light.off .lightOff{
+    display: inline;
+    color:#fff;
+}
+.light a i{    
+    font-size:30px;
 }

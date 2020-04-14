@@ -1,19 +1,21 @@
 const
-    wrap = document.querySelector('#calculator .container'),
+    wrap            = document.querySelector('#calculator'),
+    light           = wrap.querySelector('.light'), // 불끄기 켜기
+
     // 스크린 영역
-    screen = wrap.querySelector('.screen'),
-    formula = screen.querySelector('.formula'),
-    result = screen.querySelector('.result'),
+    screen          = wrap.querySelector('.screen'),
+    formula         = screen.querySelector('.formula'),
+    result          = screen.querySelector('.result'),
 
     // 계산기 영역
-    calculator = wrap.querySelector('table'),
-    npSelect = calculator.querySelector('.npSelect'),
-    percent = calculator.querySelector('.percent'),
-    float = calculator.querySelector('.float'),
-    opr = calculator.querySelectorAll('.opr'),    
-    num = calculator.querySelectorAll('.num'),
-    reset = calculator.querySelector('#reset'),
-    rs = calculator.querySelector('.rs');
+    calculator      = wrap.querySelector('table'),
+    npSelect        = calculator.querySelector('.npSelect'),
+    percent         = calculator.querySelector('.percent'),
+    float           = calculator.querySelector('.float'),
+    opr             = calculator.querySelectorAll('.opr'),    
+    num             = calculator.querySelectorAll('.num'), 
+    reset           = calculator.querySelector('#reset'),
+    rs              = calculator.querySelector('.rs');
 
 let cal = {
     rs : '', // 결과
@@ -100,3 +102,13 @@ percent.addEventListener('click',percenter);
 npSelect.addEventListener('click',npSelector);
 rs.addEventListener('click',resultShow); // 결과 출력
 reset.addEventListener('click',resetAll); // 초기화
+
+
+
+
+
+light.addEventListener('click',function(e){
+    e.preventDefault();
+    this.classList.toggle('off');
+    document.body.classList.toggle('off');
+});

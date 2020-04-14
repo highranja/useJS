@@ -6,14 +6,20 @@
     <title>계산기</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="wrap">
-        <h1 class="ir_so">계산기</h1>
+        <h1 class="ir_so">계산기</h1>        
 
-        <div id="calculator">
+        <div id="calculator">    
+            <div class="light">
+                <a href="#" class="lightOn"><i class="fa fa-sun-o" aria-hidden="true"></i></a>            
+                <a href="#" class="lightOff"><i class="fa fa-moon-o" aria-hidden="true"></i></i></a>            
+            </div>
             
-            <div class="container">
+            <div class="container">   
+
                 <div class="screen">
                     <div class="formula">
                         <span></span>
@@ -21,7 +27,9 @@
                     <div class="result">
                         <span></span>
                     </div>
-                </div>
+                </div> 
+                <!-- //스크린 영역 -->
+
                 <table>
                     <tbody>
                         <tr>
@@ -55,6 +63,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <!-- //계산기버튼 영역 -->
             </div>
             
         </div>
