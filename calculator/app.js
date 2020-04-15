@@ -26,7 +26,8 @@ let cal = {
 
 // 음수 양수 변환
 function npSelector(){
-    if(result.firstElementChild.textContent.charAt(0) === '-'){
+    let rsTxt = result.firstElementChild.textContent;
+    if(rsTxt.charAt(0) === '-'){
         result.firstElementChild.textContent = result.firstElementChild.textContent.replace('-','');
     }else{
         result.firstElementChild.textContent = '-' + result.firstElementChild.textContent;
@@ -34,13 +35,33 @@ function npSelector(){
 }
 // 퍼센트 변환
 function percenter(){
-    if(result.firstElementChild.textContent.includes('+' || '-' || '*' || '/') 
-    || result.firstElementChild.textContent === ''){
+    let rsTxt = result.firstElementChild.textContent;
+    if(rsTxt.includes('+')
+    || rsTxt.includes('-')
+    || rsTxt.includes('/')
+    || rsTxt.includes('*')
+    || rsTxt === ''){
         return;
     }else{
-        cal.rs =calculation(result.firstElementChild.textContent)*0.01;
+        cal.rs =calculation(rsTxt)*0.01;
         result.firstElementChild.textContent = cal.rs;
     }
+}
+// 소수점 변환
+function floater(){
+    let rsTxt = result.firstElementChild.textContent;
+    if(cal.float){
+        result.firstElementChild.textContent += 
+        ( rsTxt.endsWith(' + ') 
+        || rsTxt.endsWith(' - ') 
+        || rsTxt.endsWith(' / ') 
+        || rsTxt.endsWith(' * ')
+        || rsTxt === '' ) 
+        ? '0'+this.textContent : this.textContent;
+        cal.float = false;    
+    }else{
+        return;
+    }    
 }
 // 계산함수 
 function calculation( txt ){    
@@ -77,15 +98,6 @@ num.forEach( (item,idx) =>{
     });
 });
 
-float.addEventListener('click',function(){
-    if(!cal.float) return;
-    
-    result.firstElementChild.textContent += 
-    (result.firstElementChild.textContent === '') 
-    ? '0'+this.textContent : this.textContent;
-    cal.float = false;    
-});
-
 //연산자 입력
 opr.forEach( (item,idx) =>{
     item.addEventListener('click',function(){   
@@ -98,6 +110,7 @@ opr.forEach( (item,idx) =>{
 });
 
 
+float.addEventListener('click',floater);
 percent.addEventListener('click',percenter);
 npSelect.addEventListener('click',npSelector);
 rs.addEventListener('click',resultShow); // 결과 출력
