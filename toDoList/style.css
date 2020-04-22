@@ -1,0 +1,118 @@
+@charset "utf-8";
+:root{
+    --text-color:#262626;
+    --background-color:#262626;
+    --padding: 15px;
+    --mobile-width:600px;
+    --box-height:45px;  
+    --font-size-large:20px;
+    --font-size-medium:16px;
+    --font-size-small:12px;
+}
+
+/* 레이아웃 */
+body{
+    font-family: 'Roboto', sans-serif;
+}
+.wrap{
+    width: 100%;
+    height: 100vh;
+    background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% );   
+}
+.wrap .container{
+    margin:0 auto;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;    
+}
+.todo{    
+    width:var(--mobile-width);
+    height: 600px;
+    text-align: center;   
+    
+}
+
+/* todo-search */
+.todo-search{
+    margin-bottom:30px;
+    border:5px solid #fff;    
+}
+.todo-search #search{
+    position: relative;
+    width: 100%;
+}
+.todo-search #search .search-input {
+    display: block;
+    width: 100%;
+    padding-left:50px;
+    line-height:var(--box-height);
+    font-size:var(--font-size-medium);
+    color:var(--text-color);
+    background:none;    
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+.todo-search #search .search-input::placeholder{
+    line-height:var(--box-height);
+    font-size:var(--font-size-medium);
+    color:#fff;
+    font-weight: normal;
+}
+.todo-search #search .search-btn{
+    position: absolute;
+    left:0;
+    top:0;
+    width: 45px;
+    height: 45px;  
+    font-size:var(--font-size-large);
+    color:#fff;
+}
+
+/* todo-contents */
+.todo-contents{
+    width: 100%;
+    min-height:500px;
+    padding:var(--padding);
+    border:5px solid #fff;
+    box-sizing: border-box;
+}
+.todo-add{    
+    margin-bottom:15px;
+    background-color: #fff;
+    border:2px solid #fff;
+    border-radius:5px;
+    transition: all .3s ease-in;
+}
+.todo-add.active,
+.todo-add:hover {
+    box-shadow: 5px 4px 5px 2px rgba(0,0,0,.4);
+}
+.todo-add #add{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding:5px;
+}
+.todo-add .add-input{
+    width: 100%;
+    padding:0 20px;
+    outline: none;
+    box-sizing: border-box;
+}
+.todo-add .add-btn{
+    width:30px;
+    height:30px;
+    padding:5px;
+    background-color:var(--background-color);
+    font-size:var(--font-size-small);
+    color:#fff;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius:50%;
+}
+.todo-item{
+    display: flex;
+    flex-direction: row;
+}
