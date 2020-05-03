@@ -1,0 +1,101 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.ir_pm {
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+  color: transparent;
+}
+
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  width: 768px;
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+caption {
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+}
+
+#calendar {
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#calendar .month {
+  position: relative;
+  border: 1px solid #252525;
+}
+
+#calendar .month th {
+  padding: 15px 0;
+}
+
+#calendar .month th > span {  
+    display: inline-block;
+  margin: 0 25px;
+  width: 100px;
+}
+
+#calendar .month button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+#calendar .day th {
+  display: table-cell;
+  padding: 10px 0;
+  font-size: 15px;
+  font-weight:normal;
+  border: 1px solid #262626;
+}
+
+#calendar .day th.sat {
+  color: #888;
+}
+
+#calendar .day th.sun {
+  color: red;
+}
+
+#calendar tbody{
+    overflow: hidden;
+    max-height:520px;
+}
+
+#calendar td {
+  display: table-cell;
+  word-break:break-all;table-layout:fixed;
+  font-size: 12px;
+  height: 16%;
+  padding: 10px 0 40px 10px;
+  border: 1px solid #262626;  
+  box-sizing: border-box;
+}
+
+#calendar .date td span{
+    display: block;
+    width: 15px;
+    height: 15px;
+}
+
+#calendar .date td.today span{    
+  background-color: #ffab15;
+}
