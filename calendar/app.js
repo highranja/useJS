@@ -1,6 +1,7 @@
 "use strict";
 
 const calendar = document.querySelector("#calendar"),
+  year = calendar.querySelector('.year'),
   month = calendar.querySelector(".month"),
   btn = month.querySelectorAll('button'),
   day = calendar.querySelector(".day"),
@@ -11,16 +12,31 @@ let yy = TODAY.getFullYear();
 let mm = TODAY.getMonth() + 1;
 let dd = TODAY.getDate();
 
-console.log(`${yy}-${mm}-${dd}`);
+
 
 window.onload= () => {
     createCalendar(TODAY);
     CheckToday();
 };
 
+function CheckToday() {
+    let today = TODAY.getDate();
+    date.forEach((item, idx) => {
+        if(item.firstElementChild.innerHTML == today){   
+            item.classList.add('today');
+            return;      
+        }
+    });
+}
+
 function createCalendar(TODAY) { // 인자 : 날짜 객체만
+    fillYear(TODAY);
     fillMonth(TODAY);
     fillDay(TODAY);
+}
+
+function fillYear(TODAY) {
+    year.firstElementChild.innerHTML = TODAY.getFullYear();
 }
 
 function fillDay(TODAY) {    
@@ -50,41 +66,55 @@ function fillMonth(TODAY) {
 function resetCalendar() {
     date.forEach((item) => {
         item.firstElementChild.innerHTML = '';
+        item.classList.remove('thisMonth');
     });   
 }
 
-function CheckToday() {
-    let today = TODAY.getDate();
-    date.forEach((item, idx) => {
-        if(item.firstElementChild.innerHTML == today){   
-            item.classList.add('today');
-            return;      
-        }
-    });
-}
+
 
 // 이전 달 , 다음달 선택 이벤트
-btn.forEach((item, idx) => {
+btn.forEach((item) => {
     item.addEventListener('click',() => {
         resetCalendar();        
-        if(item.classList.contains('next')){
-            mm++;
-            let next = new Date(`${yy}-${mm}-${dd}`);
-
-            createCalendar(next);
+        if(item.classList.contains('next')){            
+            nextCalendar();
         } else {
-            mm--;
-            let prev = new Date(`${yy}-${mm}-${dd}`);
-
-            createCalendar(prev);
+            prevCalendar();
         }
     });
 });
 
 
 
+// 이전 달 보기
+function nextCalendar() {    
+    let time;
+    if(mm < 11) {
+        mm++;        
+        time = new Date(`${yy}-${mm}-${dd}`);
+        createCalendar(time);        
+    } else {
+        yy++;
+        mm = 1;
+        time = new Date(`${yy}-${mm}-${dd}`);
+        createCalendar(time);        
+    }       
+}
 
-
+// 다음 달 보기
+function prevCalendar() {    
+    let time; 
+    if(mm > 1) {
+        mm--;        
+        time = new Date(`${yy}-${mm}-${dd}`);        
+        createCalendar(time);
+    } else {
+        yy--;
+        mm = 12;
+        time = new Date(`${yy}-${mm}-${dd}`);
+        createCalendar(time);        
+    }       
+}
 
 
 

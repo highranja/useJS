@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap");
 body {
   font-family: "Poppins", sans-serif;
+  
 }
 
 .ir_pm {
@@ -38,9 +39,15 @@ caption {
     width: 100%;
 }
 
+#calendar .year th {
+    font-size:25px;
+    text-align: left;
+    font-weight: normal;
+    color:#598dec;
+}
+
 #calendar .month {
-  position: relative;
-  border: 1px solid #252525;
+  position: relative;  
 }
 
 #calendar .month th {
@@ -63,12 +70,14 @@ caption {
   display: table-cell;
   padding: 10px 0;
   font-size: 15px;
+  color:#fff;
   font-weight:normal;
   border: 1px solid #262626;
+  background-color: #000;
 }
 
 #calendar .day th.sat {
-  color: #888;
+  color: rgb(138, 154, 243);
 }
 
 #calendar .day th.sun {
@@ -86,16 +95,29 @@ caption {
   font-size: 12px;
   height: 16%;
   padding: 10px 0 40px 10px;
-  border: 1px solid #262626;  
+  cursor: pointer;    
+  transition: all .3s ease;
   box-sizing: border-box;
 }
 
-#calendar .date td span{
+#calendar .date td span {
     display: block;
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
+    line-height:20px;
+    border-radius:50%;
+    text-align: center;
+}
+
+#calendar .date td.thisMonth:hover span {
+    background-color: #ffa91596;
+}
+
+#calendar .date td.thisMonth {    
+    background-color: rgba(253,220,155,1);
 }
 
 #calendar .date td.today span{    
-  background-color: #ffab15;
+  background-color: #ffa91596;
 }
+
