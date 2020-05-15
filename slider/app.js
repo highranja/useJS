@@ -2,37 +2,66 @@
 
 const slideContainer = document.querySelector(".slide-container"),
 	slideList = slideContainer.querySelector(".slide-list"),
-	slide = slideList.querySelectorAll(".slide");
+	slide = slideList.querySelectorAll(".slide"),
+	barBox = document.querySelector(".slide-bar"),
+	prev = barBox.querySelector("#prev"),
+	next = barBox.querySelector("#next"),
+	bar = barBox.querySelector(".bar");
 
-let move = 0;
+let move = 0,
+	grabFrom = false,
+	count = 0;
 
 slideContainer.addEventListener("mousedown", (e) => {
-	console.log(e.clientX);
+	grabFrom = true;
 	move += e.clientX;
 });
 
-slideContainer.addEventListener("mouseup", (e) => {
-	console.log(e.clientX);
-	move -= e.clientX;
-	slideMove();
+slideContainer.addEventListener("mousemove", (e) => {
+	if (grabFrom) {
+		slideMove(e);
+	}
 });
 
-function slideMove() {
-    const prevSlideMove = slideList.offsetLeft;
-    const slideListWidth = slideList.offsetWidth;
-    const viewWidth = document.body.offsetWidth;
-    const maxWidth = slideListWidth - viewWidth;
-    let slideMoveTo = prevSlideMove - move;
+slideContainer.addEventListener("mouseup", (e) => {
+	grabFrom = false;
+	move -= e.clientX;
+	slideSetOnLine();
+});
 
-    console.log(prevSlideMove ,slideListWidth,viewWidth,maxWidth,slideMoveTo, move )
-    if (prevSlideMove > -maxWidth) {
-        slideList.style.left = `${slideMoveTo}px`;
-    } else {
-        slideList.style.left = `${-maxWidth}px`;
-    }
+function slideMove(e) {
+	const currentX = slideList.offsetLeft;
+}
 
-	
-
+function slideSetOnLine() {
+	console.log("놨다요놈");
 	move = 0;
-};
+}
 
+prev.addEventListener("click", () => {
+	if (count < 1) return;
+	count--;
+	btnSlide();
+});
+next.addEventListener("click", () => {
+	if (count > slide.length - 4) return;
+	count++;
+	console.log(count);
+	btnSlide();
+});
+
+function btnSlide() {
+	const slideWidth = slide[0].offsetWidth;
+	const sliderWidth = slideList.offsetWidth;
+	const currentSlideMove = count * slideWidth + 30 * count;
+
+	slideList.style.left = `-${currentSlideMove}px`;
+	barMoveOnSlide();
+}
+
+function barMoveOnSlide() {
+	const maxNumber = slide.length - 3;
+	const barPercent = (100 / maxNumber) * count;
+
+	bar.style.width = `${barPercent}%`;
+}
