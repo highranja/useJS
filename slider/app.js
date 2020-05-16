@@ -1,38 +1,76 @@
 "use strict";
 
-const slideContainer = document.querySelector(".slide-container"),
+const 
+    slideContainer = document.querySelector(".slide-container"),
 	slideList = slideContainer.querySelector(".slide-list"),
-	slide = slideList.querySelectorAll(".slide");
+	slide = slideList.querySelectorAll(".slide"),
+	barBox = document.querySelector(".slide-bar"),
+	prev = barBox.querySelector("#prev"),
+	next = barBox.querySelector("#next"),
+	bar = barBox.querySelector(".bar");
 
-let move = 0;
+let moveFrom = 0,    
+	grabFrom = false,
+    count = 0,
+    currentX;
+
+const maxNumber = slide.length - 4; 
+const slideWidth = slide[0].offsetWidth; 
+
+prev.addEventListener("click", () => {
+	if (count < 1) return;
+	count--;
+	btnSlide();
+});
+
+next.addEventListener("click", () => {
+	if (count > maxNumber) return;
+	count++;	
+	btnSlide();
+});
 
 slideContainer.addEventListener("mousedown", (e) => {
-	console.log(e.clientX);
-	move += e.clientX;
+	grabFrom = true;
+    moveFrom = e.clientX;       
+});
+
+slideContainer.addEventListener("mousemove", (e) => {
+	if (grabFrom) {
+		grabSlide(e);
+	}
 });
 
 slideContainer.addEventListener("mouseup", (e) => {
-	console.log(e.clientX);
-	move -= e.clientX;
-	slideMove();
+	grabFrom = false;    
+    moveFrom = 0;
 });
 
-function slideMove() {
-    const prevSlideMove = slideList.offsetLeft;
-    const slideListWidth = slideList.offsetWidth;
-    const viewWidth = document.body.offsetWidth;
-    const maxWidth = slideListWidth - viewWidth;
-    let slideMoveTo = prevSlideMove - move;
+function grabSlide(e) {
+    const currentX = e.clientX;         
+    let currentSlideX = slideList.offsetLeft - (moveFrom - currentX);
 
-    console.log(prevSlideMove ,slideListWidth,viewWidth,maxWidth,slideMoveTo, move )
-    if (prevSlideMove > -maxWidth) {
-        slideList.style.left = `${slideMoveTo}px`;
+    if (currentSlideX > 0) {
+        slideList.style.left = `${0}px`;
+    } else if (currentSlideX < -3000) {
+        slideList.style.left = `${-3010}px`;
     } else {
-        slideList.style.left = `${-maxWidth}px`;
-    }
+        slideList.style.left = `${currentSlideX}px`;
+    }     
 
-	
+    let touchPercent = Math.floor(-currentSlideX *100 / 3010); // 마우스로 댕긴 만큼 바의 길이를 정한다
+    count = Math.ceil( touchPercent * 7 / 100);
+    bar.style.width = `${touchPercent}%`;    
+}
 
-	move = 0;
-};
+function btnSlide() {	
+	const currentSlideMove = count * slideWidth + 30 * count;    
+    slideList.style.left = `-${currentSlideMove}px`;  
+
+	barMoveOnSlide();
+}
+
+function barMoveOnSlide() {	
+	const barPercent = (100 / (maxNumber + 1)) * count;    
+	bar.style.width = `${barPercent}%`;
+}
 
