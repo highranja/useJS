@@ -1,0 +1,93 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap');
+body {    
+    font-family: 'Balsamiq Sans', cursive;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(239,87,87,0.74) 0%, rgba(245,123,13,0.74) 90.2% );
+}
+
+img {
+    display: block;
+    width: 100%;
+    /* -webkit-user-select: none;
+    pointer-events: none; */
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+
+#cardBox {
+    width: 800px;       
+}
+
+#cardBox h1 {
+    font-size:36px;
+    padding:0 0 60px;
+    text-align: center;
+}
+
+.countTimer {
+    color:#fff;
+}
+
+.card-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {    
+    position: relative;
+    perspective:600px;
+    width: 140px;
+    margin:10px;  
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.4);    
+    cursor: -webkit-grab;
+}
+
+
+.card img {
+    display: block;
+    transform-style: preserve-3d;
+    transform: rotateY(180deg);   
+    backface-visibility: hidden;    
+    transition: transform .5s ease-in;
+}
+
+.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    color: #fff;
+    background: #4038dc;
+    font-size:35px;
+    transform: rotateY(0);
+    transition: transform .5s ease-in;
+    backface-visibility: hidden;
+}
+
+/* .card:hover .back, */
+.card.open .back {
+    z-index: -1;
+    transform:rotateY(-180deg);
+}
+
+/* .card:hover img, */
+.card.open img {
+    transform:rotateY(0deg);
+}
+
