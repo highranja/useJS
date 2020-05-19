@@ -11,3 +11,7 @@
 03 Calendar
   - date : 2020-05-02 ~ 2020-05-04
   - view : https://highranja.github.io/useJS/calendar/
+
+04 Slider
+ - date : 2020-05-14 ~ 2020-05-16
+ - view : https://highranja.github.io/useJS/slider/
