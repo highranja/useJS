@@ -23,12 +23,14 @@
 
 04 Slider
  - date : 2020-05-14 ~ 2020-05-16
+ - desc : 슬라이드와 스와이프 구현
  - view : https://highranja.github.io/useJS/slider/
  
  
 
 05 FindTheiu
  - date : 2020-05-17 ~ 2020-05-20
+ - desc : 같은 카드 찾기 미니게임
  - view : https://highranja.github.io/useJS/findTheiu/
  
  
